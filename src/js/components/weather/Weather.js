@@ -5,9 +5,9 @@ import {weatherStore} from 'js/components/weather/WeatherStore';
 import {weatherActions} from 'js/components/weather/WeatherActions';
 
 import {getApiData} from 'js/utils/api';
-import {viewOptions} from 'js/config';
 
 import InputContainer from '../input/inputContainer';
+import ResultsContainer from '../results/resultsContainer';
 
 export default class Body extends Component {
   constructor(props){
@@ -22,8 +22,8 @@ export default class Body extends Component {
   componentDidMount() {
     // Subscribe to the store for updates
     const apiData = getApiData();
-    weatherActions.initialize(); //initialize store
     apiData.onload = function(){
+      weatherActions.initialize(); //initialize store
       weatherActions.processData(JSON.parse(apiData.responseText));
     };
   }
@@ -35,7 +35,10 @@ export default class Body extends Component {
   render () {
 
     return (
-      <InputContainer />
+      <div>
+        <InputContainer />
+        <ResultsContainer />
+      </div>
     );
   }
 }

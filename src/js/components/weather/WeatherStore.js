@@ -10,7 +10,9 @@ class WeatherStore {
 	this.leaveTime = 8;
 	this.returnTime = 17;
 	this.chance = 20;
-
+	this.weatherData = {};
+	this.bikeWeather = true;
+	this.reasons = [];
 		this.bindListeners({
 			initialize: weatherActions.initialize,
 			processData: weatherActions.processData,
@@ -20,12 +22,10 @@ class WeatherStore {
 
 	initialize(){
 	this.init = true;
-	console.log(this.state)
 	}
 
 	processData(data) {
-		console.log('ran');
-		console.log(this.state)
+		this.setState({weatherData: data.weatherData, bikeWeather: data.bikeWeather,reasons: data.reasons});
 	}
 	modifyState(state){
 		this.setState(state);

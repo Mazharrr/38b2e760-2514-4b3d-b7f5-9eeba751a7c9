@@ -1,3 +1,3 @@
-import alt from 'alt';
+import Alt from 'alt';
 
-export const dispatcher = new alt();
+export const dispatcher = new Alt();

@@ -1,18 +1,18 @@
 import {urls} from 'js/config';
 
-let fetchApiData = (appId) => {
-  let invocation = new XMLHttpRequest();
+const fetchApiData = (appId) => {
+  const invocation = new XMLHttpRequest();
   invocation.open('GET', urls.itemInfo(appId), true);
   invocation.send();
 
   return invocation;
-}
+};
 /**
 * @param {string} appId - API Id or to get info about
 */
-export let getApiData = (apiId) => {
+export const getApiData = (apiId) => {
 
-    let invocation = fetchApiData(apiId)
+    const invocation = fetchApiData(apiId);
 
     return invocation;
-}
+};
