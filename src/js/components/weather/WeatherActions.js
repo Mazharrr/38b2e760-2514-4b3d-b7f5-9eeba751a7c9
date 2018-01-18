@@ -8,6 +8,8 @@ class WeatherActions {
 		return null;
 	}
 	processData(data){
+		//runs starting state through a helper function which will return
+		//an an array of 'reasons' not to bike, if it's empty, bikeWeather will remain true
 		const initialState = weatherStore.getState();
 		const resultArr = reasonsNotToBike(data, initialState);
 		if (resultArr.length) {
@@ -16,6 +18,7 @@ class WeatherActions {
 		return {weatherData: data, bikeWeather: true, reasons: []};
 	}
 	modifyState(state){
+		//runs what ran in process data, but every single time a state change occurs
 		const initialState = weatherStore.getState();
 		const resultArr = reasonsNotToBike(initialState.weatherData, initialState);
 		const canBike = !resultArr.length;

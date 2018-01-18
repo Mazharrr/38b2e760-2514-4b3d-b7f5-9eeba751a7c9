@@ -4,6 +4,7 @@ import {dispatcher} from 'js/dispatcher';
 
 class WeatherStore {
 	constructor () {
+	//initializing our state
 	this.init = false
 	this.minTemp = 50;
 	this.maxTemp = 80;
@@ -13,6 +14,7 @@ class WeatherStore {
 	this.weatherData = {};
 	this.bikeWeather = true;
 	this.reasons = [];
+
 		this.bindListeners({
 			initialize: weatherActions.initialize,
 			processData: weatherActions.processData,
@@ -26,9 +28,11 @@ class WeatherStore {
 
 	processData(data) {
 		this.setState({weatherData: data.weatherData, bikeWeather: data.bikeWeather,reasons: data.reasons});
+		//sets the state after retrieving API data
 	}
 	modifyState(state){
 		this.setState(state);
+		//sets state on modification
 	}
 }
 

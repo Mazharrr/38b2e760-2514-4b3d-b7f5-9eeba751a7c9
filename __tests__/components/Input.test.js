@@ -5,7 +5,7 @@ import React from 'react';
 
 describe('Input snapshot Tests', () => {
 
-  test('Sample of snapshot testing, not very useful, but shows how to do it', () => {
+  test('Snapshot testing', () => {
     const input = renderer.create(
       <Input/>
     );

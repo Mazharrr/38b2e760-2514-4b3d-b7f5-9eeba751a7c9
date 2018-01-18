@@ -1,4 +1,5 @@
 export const calculateTime = function (val, repeatCheck){
+  //simple helper function to convert a number (based on 24 hours) into a string range
   const originalVal = val;
   if (val === 0 || val === 24) {
     if (repeatCheck) {
@@ -17,6 +18,8 @@ export const calculateTime = function (val, repeatCheck){
 };
 
 export const findHourIndex = function(time) {
+  //since the darksky API starts returns an array from the most recent hour and onwards
+  //this will determine how far ahead you need to look to find relevant data
   const newDate = new Date().getHours();
   if (time < newDate) {
     return time - newDate + 24;
@@ -25,10 +28,13 @@ export const findHourIndex = function(time) {
 };
 
 export const reasonsNotToBike = function(data, initialState) {
+  //find the index of relevant data from api
   const leaveIndex = findHourIndex(initialState.leaveTime);
   const returnIndex = findHourIndex(initialState.returnTime);
+  //reference that data
   const leaveData = data.hourly.data[leaveIndex];
   const returnData = data.hourly.data[returnIndex];
+  //check that data based on prefs and add it onto an array of 'reasons' for failure
   const resultArr = [];
   if (leaveData.temperature > initialState.maxTemp) {
     resultArr.push(`Temperature during departure (${leaveData.temperature}) is above maximum allowed temperature.`);

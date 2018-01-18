@@ -22,6 +22,8 @@ export default class Body extends Component {
   componentDidMount() {
     // Subscribe to the store for updates
     const apiData = getApiData();
+
+    //onload makes it wait for the data to finish loading before running it through our actions
     apiData.onload = function(){
       weatherActions.initialize(); //initialize store
       weatherActions.processData(JSON.parse(apiData.responseText));

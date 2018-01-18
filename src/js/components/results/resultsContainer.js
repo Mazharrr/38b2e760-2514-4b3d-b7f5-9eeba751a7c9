@@ -11,6 +11,7 @@ class ResultsContainer extends React.Component {
     this.state = weatherStore.getState();
     weatherStore.listen(this.storeDidUpdate.bind(this));
   }
+
   storeDidUpdate() {
     this.setState(weatherStore.getState());
   }
