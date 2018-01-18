@@ -5,7 +5,7 @@ import React from 'react';
 
 describe('Weather snapshot Tests', () => {
 
-  test('Snapshot test', () => {
+  test('Sample of snapshot testing, not very useful, but shows how to do it', () => {
     const weather = renderer.create(
       <Weather/>
     );

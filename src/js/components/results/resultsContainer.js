@@ -2,11 +2,10 @@ import React from 'react';
 
 import Results from './results';
 
-import {weatherStore} from 'js/components/weather/WeatherStore';
-
+import { weatherStore } from 'js/components/weather/WeatherStore';
 
 class ResultsContainer extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = weatherStore.getState();
     weatherStore.listen(this.storeDidUpdate.bind(this));
@@ -15,12 +14,13 @@ class ResultsContainer extends React.Component {
   storeDidUpdate() {
     this.setState(weatherStore.getState());
   }
-  render(){
+  render() {
     return (
       <div className="container">
         <Results
           bikeWeather={this.state.bikeWeather}
-          reasons={this.state.reasons}/>
+          reasons={this.state.reasons}
+        />
       </div>
     );
   }

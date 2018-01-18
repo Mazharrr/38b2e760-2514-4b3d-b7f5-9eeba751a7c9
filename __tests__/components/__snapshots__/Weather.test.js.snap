@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Weather snapshot Tests Snapshot test 1`] = `
+exports[`Weather snapshot Tests Sample of snapshot testing, not very useful, but shows how to do it 1`] = `
 <div>
   <div>
     <div
