@@ -5,6 +5,9 @@ class WeatherActions {
 	initialize(){
 		return null
 	}
+	processData(data){
+		console.log(data)
+	}
 
 }
 export const weatherActions = dispatcher.createActions(WeatherActions);

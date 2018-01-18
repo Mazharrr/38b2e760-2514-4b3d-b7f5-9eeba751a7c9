@@ -7,12 +7,17 @@ class WeatherStore {
     this.init = false
 
 		this.bindListeners({
-			initialize: weatherActions.initialize
+			initialize: weatherActions.initialize,
+			processData: weatherActions.processData
 		});
 	}
 
 	initialize(){
     this.init = true;
+	}
+
+	processData(data) {
+		console.log(data);
 	}
 }
 

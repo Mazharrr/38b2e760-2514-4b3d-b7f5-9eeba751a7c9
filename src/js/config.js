@@ -1,5 +1,5 @@
 const latitude = 38.9072;
-const longitude = 77.0369
+const longitude = -77.0369
 //defaults for store
 
 

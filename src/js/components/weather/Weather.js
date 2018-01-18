@@ -7,6 +7,8 @@ import {weatherActions} from 'js/components/weather/WeatherActions';
 import {getApiData} from 'js/utils/api';
 import {viewOptions} from 'js/config';
 
+import InputContainer from '../input/inputContainer';
+
 export default class Body extends Component {
   constructor(props){
 		super(props);
@@ -19,6 +21,8 @@ export default class Body extends Component {
   */
   componentDidMount() {
     // Subscribe to the store for updates
+    let apiData = getApiData();
+    console.log(apiData);
     weatherActions.initialize(); //initialize store
   }
 
@@ -29,7 +33,7 @@ export default class Body extends Component {
   render () {
 
     return (
-      <div>App</div>
+      <InputContainer />
     );
   }
 }

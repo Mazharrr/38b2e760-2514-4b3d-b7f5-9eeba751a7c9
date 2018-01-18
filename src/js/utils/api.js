@@ -4,7 +4,6 @@ let fetchApiData = (appId) => {
   let invocation = new XMLHttpRequest();
   invocation.open('GET', urls.itemInfo(appId), true);
   invocation.send();
-
   return invocation;
 }
 /**
@@ -13,6 +12,6 @@ let fetchApiData = (appId) => {
 export let getApiData = (apiId) => {
 
     let invocation = fetchApiData(apiId)
-
+    console.log(invocation)
     return invocation;
 }
