@@ -61,26 +61,31 @@ class InputContainer extends React.Component {
       <div>
         <div className="container">
           <InputTime
+            isInit={this.state.init}
             direction="departure"
             currValue={this.state.leaveTime}
             onChange={this.changeTime}/>
           <InputTime
+            isInit={this.state.init}
             direction="return"
             currValue={this.state.returnTime}
             onChange={this.changeTime}/>
         </div>
         <div className="container">
           <InputDegrees
+            isInit={this.state.init}
             minOrMax="minimum"
             currValue={this.state.minTemp}
             onChange={this.changeTemp}/>
           <InputDegrees
+            isInit={this.state.init}
             minOrMax = "maximum"
             currValue={this.state.maxTemp}
             onChange={this.changeTemp}/>
         </div>
         <div className="container">
           <InputChance
+            isInit={this.state.init}
             currValue={this.state.chance}
             onChange={this.changeChance}/>
         </div>

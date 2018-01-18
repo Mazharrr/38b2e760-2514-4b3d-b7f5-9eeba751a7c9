@@ -4,7 +4,7 @@ export const calculateTime = function (val, repeatCheck){
     if (repeatCheck) {
       return '12AM';
     }
-    return '12 AM - ' + calculateTime(originalVal + 1, true);
+    return '12AM - ' + calculateTime(originalVal + 1, true);
   }
   const suffix = val < 12 ? 'AM' : 'PM';
   if (val > 12) {
@@ -19,7 +19,7 @@ export const calculateTime = function (val, repeatCheck){
 export const findHourIndex = function(time) {
   const newDate = new Date().getHours();
   if (time < newDate) {
-    return time - newDate +24;
+    return time - newDate + 24;
   }
   return time - newDate;
 };
