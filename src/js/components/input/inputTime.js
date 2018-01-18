@@ -1,6 +1,5 @@
 import React from 'react';
 import {calculateTime} from '../../utils/helperFunctions';
-import 'nouislider';
 
 export default function InputTime (props) {
   let direction = props.direction;

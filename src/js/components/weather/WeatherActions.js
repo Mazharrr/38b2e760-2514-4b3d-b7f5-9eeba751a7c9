@@ -6,7 +6,10 @@ class WeatherActions {
 		return null
 	}
 	processData(data){
-		console.log(data)
+
+	}
+	modifyState(state){
+		return state;
 	}
 
 }

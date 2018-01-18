@@ -21,9 +21,11 @@ export default class Body extends Component {
   */
   componentDidMount() {
     // Subscribe to the store for updates
-    let apiData = getApiData();
-    console.log(apiData);
+    const apiData = getApiData();
     weatherActions.initialize(); //initialize store
+    apiData.onload = function(){
+      weatherActions.processData(JSON.parse(apiData.responseText));
+    };
   }
 
   storeDidUpdate = () => {

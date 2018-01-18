@@ -1,58 +1,60 @@
 import React from 'react';
+
 import InputTime from './inputTime';
 import InputDegrees from './inputDegrees';
 import InputChance from './inputChance';
 
+import {weatherStore} from 'js/components/weather/WeatherStore';
+import {weatherActions} from 'js/components/weather/WeatherActions';
+
 class InputContainer extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      leaveTime: 8,
-      returnTime: 17,
-      minTemp: 50,
-      maxTemp: 80,
-      chance: 20
-    };
+    this.state = weatherStore.getState();
     this.changeTime = this.changeTime.bind(this);
     this.changeTemp = this.changeTemp.bind(this);
     this.changeChance = this.changeChance.bind(this);
   }
   changeTime(e) {
     if (e.target.id === 'departure') {
-      this.setState({leaveTime: Number(e.target.value)});
+      this.modifyStates({leaveTime: Number(e.target.value)});
       if (e.target.value >= this.state.returnTime) {
         if (Number(e.target.value) + 1 > 23) {
-          this.setState({returnTime: 23});
+          this.modifyStates({returnTime: 23});
         } else {
-          this.setState({returnTime: Number(e.target.value) + 1});
+          this.modifyStates({returnTime: Number(e.target.value) + 1});
         }
       }
     } else if (e.target.id === 'return'){
-      this.setState({returnTime: Number(e.target.value)});
+      this.modifyStates({returnTime: Number(e.target.value)});
       if (e.target.value <= this.state.leaveTime) {
         if (Number(e.target.value) - 1 < 0) {
-          this.setState({leaveTime: 0});
+          this.modifyStates({leaveTime: 0});
         } else {
-          this.setState({leaveTime: Number(e.target.value) - 1});
+          this.modifyStates({leaveTime: Number(e.target.value) - 1});
         }
       }
     }
   }
   changeTemp(e) {
     if (e.target.id === 'minimum') {
-      this.setState({minTemp: Number(e.target.value)});
+      this.modifyStates({minTemp: Number(e.target.value)});
       if (e.target.value >= this.state.maxTemp) {
-        this.setState({maxTemp: Number(e.target.value) + 1});
+        this.modifyStates({maxTemp: Number(e.target.value) + 1});
       }
     } else if (e.target.id === 'maximum'){
-      this.setState({maxTemp: Number(e.target.value)});
+      this.modifyStates({maxTemp: Number(e.target.value)});
       if (e.target.value <= this.state.minTemp) {
-        this.setState({minTemp: Number(e.target.value) + 1});
+        this.modifyStates({minTemp: Number(e.target.value) + 1});
       }
     }
   }
   changeChance(e) {
-    this.setState({chance: e.target.value});
+    this.modifyStates({chance: e.target.value});
+  }
+  modifyStates(state) {
+    this.setState(state);
+    weatherActions.modifyState(state);
   }
   render(){
     return (

@@ -11,6 +11,7 @@ export default class Header extends Component {
       <div className='app-header relative'>
         <h1 className='app-title text-center'>{title}</h1>
         <img className="app-logo" src={logoImg} alt="app-logo" />
+        <button type="button" className="input-button" > Calculate </button>
       </div>
     );
   }
