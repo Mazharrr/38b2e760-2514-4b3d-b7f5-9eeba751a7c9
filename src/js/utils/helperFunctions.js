@@ -28,6 +28,9 @@ export const findHourIndex = function(time) {
 };
 
 export const reasonsNotToBike = function(data, initialState) {
+  if (!data.hourly){
+    return [];
+  }
   //find the index of relevant data from api
   const leaveIndex = findHourIndex(initialState.leaveTime);
   const returnIndex = findHourIndex(initialState.returnTime);
@@ -53,8 +56,8 @@ export const reasonsNotToBike = function(data, initialState) {
   if (leaveData.precipProbability > (initialState.chance / 100)) {
     resultArr.push(`The chance of precipitation (${leaveData.precipProbability * 100}%) during departure is too high.`);
   }
-  if (returnData.precipProbability > initialState.chance) {
-    resultArr.push(`The chance of precipitation (${returnData.precipProbability * 100}%) during departure is too high.`);
+  if (returnData.precipProbability > initialState.chance / 100) {
+    resultArr.push(`The chance of precipitation (${returnData.precipProbability * 100}%) during return is too high.`);
   }
   return resultArr;
 };

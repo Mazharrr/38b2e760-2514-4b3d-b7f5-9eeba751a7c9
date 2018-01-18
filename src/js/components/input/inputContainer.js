@@ -63,7 +63,7 @@ class InputContainer extends React.Component {
       weatherActions.modifyState({maxTemp: Number(e.target.value)});
       if (e.target.value <= this.state.minTemp) {
         //ensures min range is lower than max range
-        weatherActions.modifyState({minTemp: Number(e.target.value) + 1});
+        weatherActions.modifyState({minTemp: Number(e.target.value) - 1});
       }
     }
   }
